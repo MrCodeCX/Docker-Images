@@ -1,8 +1,10 @@
 FROM alpine:latest
 
-COPY setup.sh /tmp/setup.sh
+ARG ZSH_THEME="af-magic"
 
-RUN sh /tmp/setup.sh && \
-    rm /tmp/setup.sh
+COPY setup_zsh_alpine.sh /tmp/setup_zsh_alpine.sh
 
-CMD [ "/bin/zsh" ]
+RUN sh /tmp/setup_zsh_alpine.sh "${ZSH_THEME}" && \
+    rm /tmp/setup_zsh_alpine.sh
+
+ENTRYPOINT [ "/bin/zsh" ]

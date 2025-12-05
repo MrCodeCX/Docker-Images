@@ -30,7 +30,3 @@ git clone https://github.com/Aloxaf/fzf-tab "${ZSH_CUSTOM}/fzf-tab"
 sed -i "s/plugins=(git)/plugins=(git zsh-autosuggestions zsh-completions fzf-tab)/g" "${ZSH_DIR}/.zshrc"
 
 sed -i "s/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"${ZSH_THEME}\"/g" "${ZSH_DIR}/.zshrc"
-
-# MODIFY .ZSHRC ADDING COMMANDS
-echo 'autoload -Uz compinit && compinit' >> "${ZSH_DIR}/.zshrc" # RELOAD COMPLETION (COMPINIT)
-echo 'source /opt/ros/jazzy/setup.zsh' >> "${ZSH_DIR}/.zshrc"   # SOURCE ROS SETUP

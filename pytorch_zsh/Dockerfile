@@ -1,11 +1,13 @@
 FROM pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime
 
-COPY setup.sh /tmp/setup.sh
-
 # ConfigUTF-8 GLOBAL
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
-RUN sh /tmp/setup.sh && \
-    rm /tmp/setup.sh
+ARG ZSH_THEME="af-magic"
 
-CMD [ "/bin/zsh" ]
+COPY setup_zsh_ubuntu.sh /tmp/setup_zsh_ubuntu.sh
+
+RUN sh /tmp/setup_zsh_ubuntu.sh "${ZSH_THEME}" && \
+    rm /tmp/setup_zsh_ubuntu.sh
+
+ENTRYPOINT [ "/bin/zsh" ]

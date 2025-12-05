@@ -6,15 +6,15 @@ ZSH_DIR="${HOME}"
 ZSH_CUSTOM="${ZSH_DIR}/.oh-my-zsh/custom/plugins"
 
 # UPDATE REPO
-apt update
+apk update
 
 # INSTALL ZSH AND DEPENDENCIES PLUGINS OHMYZSH
-apt install -y zsh
-apt install -y git
-apt install -y fzf
-apt install -y wget
+apk add zsh
+apk add git
+apk add fzf
+apk add wget
 # INSTALL USEFULL PACKAGES
-apt install -y nano
+apk add nano
 
 # INSTALL ZSH (DEFAULT FOR ROOT)
 RUNZSH=no sh -c "$(wget -qO- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -30,7 +30,3 @@ git clone https://github.com/Aloxaf/fzf-tab "${ZSH_CUSTOM}/fzf-tab"
 sed -i "s/plugins=(git)/plugins=(git zsh-autosuggestions zsh-completions fzf-tab)/g" "${ZSH_DIR}/.zshrc"
 
 sed -i "s/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"${ZSH_THEME}\"/g" "${ZSH_DIR}/.zshrc"
-
-# MODIFY .ZSHRC ADDING COMMANDS
-echo 'autoload -Uz compinit && compinit' >> "${ZSH_DIR}/.zshrc" # RELOAD COMPLETION (COMPINIT)
-echo 'source /opt/ros/jazzy/setup.zsh' >> "${ZSH_DIR}/.zshrc"   # SOURCE ROS SETUP
