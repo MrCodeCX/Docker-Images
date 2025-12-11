@@ -1,20 +1,23 @@
 #!/bin/sh
 
 # SCRIPT VARIABLES
-ZSH_THEME="${1:af-magic}"
+ZSH_THEME="${1:-af-magic}"
 ZSH_DIR="${HOME}"
 ZSH_CUSTOM="${ZSH_DIR}/.oh-my-zsh/custom/plugins"
 
+# PACMAN KEY INIT
+pacman-key --init
+
 # UPDATE REPO
-apt update
+pacman -Syu --noconfirm
 
 # INSTALL ZSH AND DEPENDENCIES PLUGINS OHMYZSH
-apt install -y zsh
-apt install -y git
-apt install -y fzf
-apt install -y wget
+pacman -S --noconfirm zsh
+pacman -S --noconfirm git
+pacman -S --noconfirm fzf
+pacman -S --noconfirm wget
 # INSTALL USEFULL PACKAGES
-apt install -y nano
+pacman -S --noconfirm nano
 
 # INSTALL ZSH (DEFAULT FOR ROOT)
 RUNZSH=no sh -c "$(wget -qO- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -30,7 +33,3 @@ git clone https://github.com/Aloxaf/fzf-tab "${ZSH_CUSTOM}/fzf-tab"
 sed -i "s/plugins=(git)/plugins=(git zsh-autosuggestions zsh-completions fzf-tab)/g" "${ZSH_DIR}/.zshrc"
 
 sed -i "s/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"${ZSH_THEME}\"/g" "${ZSH_DIR}/.zshrc"
-
-# MODIFY .ZSHRC ADDING COMMANDS
-echo 'autoload -Uz compinit && compinit' >> "${ZSH_DIR}/.zshrc" # RELOAD COMPLETION (COMPINIT)
-echo 'source /opt/ros/jazzy/setup.zsh' >> "${ZSH_DIR}/.zshrc"   # SOURCE ROS SETUP

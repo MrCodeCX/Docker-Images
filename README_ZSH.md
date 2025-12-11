@@ -1,6 +1,6 @@
-### Imagen de Alpine con OH-MY-ZSH
+### Imagen de <BASE> con OH-MY-ZSH
 
-Imagen base Alpine, el script setup_zsh_alpine.sh se encarga de toda la instalacion y configuracion de oh-my-zsh.
+Imagen base <BASE>, el script setup_zsh_<BASE>.sh se encarga de toda la instalacion y configuracion de oh-my-zsh.
 
 ---
 
@@ -15,7 +15,7 @@ Plugins orientados a una shell inteligente, con intelliscence.
 ### Paquetes (Instalados por Setup)
 
 - **Dependencias de oh-my-zsh**: zsh git wget
-
+s
 - **Dependencias de los plugins**: fzf
 
 - **Paquetes de utilidad**: nano
@@ -28,4 +28,4 @@ Af-magic por defecto, si deseas cambiarlo
 
 - Modifica en Dockerfile la linea ARG ZSH_THEME="af-magic"
 
-- Construye la imagen (desde la carpeta alpine_zsh): docker build -t alpine_zsh:custom . 
+- Construye la imagen (desde la carpeta <IMAGEN>): docker build -t <IMAGEN>:custom . 

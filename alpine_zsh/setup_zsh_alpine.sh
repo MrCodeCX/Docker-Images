@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # SCRIPT VARIABLES
-ZSH_THEME="${1:af-magic}"
+ZSH_THEME="${1:-af-magic}"
 ZSH_DIR="${HOME}"
 ZSH_CUSTOM="${ZSH_DIR}/.oh-my-zsh/custom/plugins"
 

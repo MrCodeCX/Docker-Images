@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # SCRIPT VARIABLES
-ZSH_THEME="${1:af-magic}"
+ZSH_THEME="${1:-af-magic}"
 ZSH_DIR="${HOME}"
-ZSH_CUSTOM="${ZSH_DIR}/.oh-my-zsh/custom/plugins"
+ZSH_PLUGINS="${ZSH_DIR}/.oh-my-zsh/custom/plugins"
 
 # UPDATE REPO
 apt update
@@ -20,11 +20,11 @@ apt install -y nano
 RUNZSH=no sh -c "$(wget -qO- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # INSTALL PLUGINS
-git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM}/zsh-autosuggestions"
+git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_PLUGINS}/zsh-autosuggestions"
 
-git clone https://github.com/zsh-users/zsh-completions "${ZSH_CUSTOM}/zsh-completions"
+git clone https://github.com/zsh-users/zsh-completions "${ZSH_PLUGINS}/zsh-completions"
 
-git clone https://github.com/Aloxaf/fzf-tab "${ZSH_CUSTOM}/fzf-tab"
+git clone https://github.com/Aloxaf/fzf-tab "${ZSH_PLUGINS}/fzf-tab"
 
 # CONFIG PLUGINS & THEME
 sed -i "s/plugins=(git)/plugins=(git zsh-autosuggestions zsh-completions fzf-tab)/g" "${ZSH_DIR}/.zshrc"
