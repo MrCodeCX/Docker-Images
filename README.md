@@ -16,7 +16,7 @@ Para instalar docker-cli, revisar la seccion "Install using the apt repository":
 
 Para usar docker desde $USER sin permisos de root, ejecutar:
 
-```
+```shell
 sudo groupadd docker             # Crea el grupo docker
 sudo usermod -aG docker $USER    # Agrega el usuario al grupo docker
 ```
@@ -35,7 +35,7 @@ Para usar docker con VSCODE, instalar las extensiones:
 
 #### Para dar Acceso a Interfaz Grafica (X11)
 
-```
+```shell
 docker create -i -t \
 -e DISPLAY=$DISPLAY \
 -v /tmp/.X11-unix:/tmp/.X11-unix \
@@ -44,7 +44,7 @@ docker create -i -t \
 
 Darle permisos a docker sobre xhost (debe hacerse cada vez que se cierre la sesion del host):
 
-```
+```shell
 xhost +local:docker   # agregar docker
 xhost -local:docker   # quitar docker
 ```
@@ -53,7 +53,7 @@ xhost -local:docker   # quitar docker
 
 #### Para dar Acceso a GPU (Normal)
 
-```
+```shell
 docker create -i -t \
 --gpus all \
 --name <name> <image>
@@ -73,13 +73,13 @@ docker create -i -t \
   
   - Desde un host con grafica integrada la libreria de renderizado puede acabar usando la grafica integrada en vez de la dedicada, para ello se especifica que se use la grafica nvidia con:
   
-  ```
+  ```shell
   echo "export __NV_PRIME_RENDER_OFFLOAD=1" >> "${HOMER}/.zshrc"
   ```
   
   - Para especificarle a opengl que use la grafica nvidia:
   
-  ```
+  ```shell
   echo "export __GLX_VENDOR_LIBRARY_NAME=nvidia" >> "${HOMER}/.zshrc"
   ```
 
@@ -87,7 +87,7 @@ docker create -i -t \
   
   Crear el contenedor con:
   
-  ```
+  ```shell
   docker create -i -t \
   --gpus all \
   -e NVIDIA_DRIVER_CAPABILITIES=all \
@@ -96,7 +96,7 @@ docker create -i -t \
   
   Una vez creado ejecutar:
   
-  ```
+  ```shell
   echo "export __NV_PRIME_RENDER_OFFLOAD=1" >> "${HOME}/.zshrc"
   echo "export __GLX_VENDOR_LIBRARY_NAME=nvidia" >> "${HOME}/.zshrc"
   ```
@@ -105,7 +105,7 @@ docker create -i -t \
 
 #### Para Crear un Volumen Personalizado
 
-```
+```shell
 docker create -i -t \
 -v <src>:/workspace \
 --name <name> <image>
@@ -117,7 +117,7 @@ docker create -i -t \
 
 Crear contenedor:
 
-```
+```shell
 docker create -i -t \
 --gpus all \
 -e NVIDIA_DRIVER_CAPABILITIES=all \
@@ -129,13 +129,13 @@ docker create -i -t \
 
 Una vez creado ejecutar:
 
-```
+```shell
 echo "export __NV_PRIME_RENDER_OFFLOAD=1" >> "${HOME}/.zshrc"
 echo "export __GLX_VENDOR_LIBRARY_NAME=nvidia" >> "${HOME}/.zshrc"
 ```
 
 Darle permisos a docker sobre xhost (debe hacerse cada vez que se cierre la sesion del host):
 
-```
+```shell
 xhost +local:docker
 ```
