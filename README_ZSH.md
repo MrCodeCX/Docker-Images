@@ -28,4 +28,4 @@ Af-magic por defecto, si deseas cambiarlo
 
 - Modifica en Dockerfile la linea ARG ZSH_THEME="af-magic"
 
-- Construye la imagen (desde la carpeta <IMAGEN>): docker build -t <IMAGEN>:custom . 
+- Construye la imagen (desde la carpeta <IMAGE>): docker build -t <USER>/<IMAGE>:latest . 
